@@ -12,6 +12,16 @@ var currentQuestionIndex = 0;
 var timeRemaining = questions.length * 15;
 var timerId;
 
+// Start of the quiz
+function startQuiz() {
+  timerId = setInterval(updateTimer, 1000);
+  timerElement.textContent = timeRemaining;
+  var startScreenElement = document.getElementById("start-screen");
+  startScreenElement.setAttribute("class", "hide");
+  questionsContainer.removeAttribute("class");
+  displayQuestion();
+}
+
 // Looping through the array of questions and answers to create a list of buttons
 function displayQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
