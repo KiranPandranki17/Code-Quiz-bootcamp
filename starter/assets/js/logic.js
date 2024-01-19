@@ -53,8 +53,8 @@ function displayQuestion() {
     }
   }
 
-  
-// Showing the final score and resetting everything when the quiz is over
+
+// Showing the final score and resetting everything when the quiz is overShowing the final score and resetting everything when the quiz is over
   // When the quiz ends, the questions are hidden, the timer stops, and the final score is displayed
 function endQuiz() {
     clearInterval(timerId);
@@ -86,3 +86,21 @@ function endQuiz() {
       alert("Your score has been submitted");
     }
   }
+
+  
+// After pressing Enter, it saves the user's score
+function handleEnterKey(event) {
+    if (event.key === "Enter") {
+      saveHighScore();
+      alert("Your score has been submitted");
+    }
+  }
+  
+  // Also responds to an Enter key if you want
+  initialsInput.onkeyup = handleEnterKey;
+  
+  // After clicking submit, it saves the user's score
+  submitButton.addEventListener("click", saveHighScore);
+  
+  // Starts quiz when you click the start button
+  startQuizButton.addEventListener("click", startQuiz);
