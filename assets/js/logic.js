@@ -94,6 +94,7 @@ function endQuiz() {
       highScores.push(latestScore);
       window.localStorage.setItem("highScores", JSON.stringify(highScores));
       alert("Your score has been submitted");
+      window.location.href = "highscores.html";
     }
   }
 
@@ -102,11 +103,8 @@ function endQuiz() {
 function handleEnterKey(event) {
     if (event.key === "Enter") {
       saveHighScore();
-      alert("Your score has been submitted");
-      window.location.href = "highscores.html";
     }
 
-  
   }
   
   // Also responds to an Enter key if you want
