@@ -104,6 +104,8 @@ function handleEnterKey(event) {
       saveHighScore();
       alert("Your score has been submitted");
     }
+
+    window.location.href = "highscores.html";
   }
   
   // Also responds to an Enter key if you want
