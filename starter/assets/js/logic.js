@@ -52,3 +52,37 @@ function displayQuestion() {
       displayQuestion();
     }
   }
+
+  
+// Showing the final score and resetting everything when the quiz is over
+  // When the quiz ends, the questions are hidden, the timer stops, and the final score is displayed
+function endQuiz() {
+    clearInterval(timerId);
+    var endScreenElement = document.getElementById("end-screen");
+    endScreenElement.removeAttribute("class");
+    var finalScoreElement = document.getElementById("final-score");
+    finalScoreElement.textContent = timeRemaining;
+    questionsContainer.setAttribute("class", "hide");
+  }
+  
+  // Stop the quiz if the timer reaches 0
+  function updateTimer() {
+    timeRemaining--;
+    timerElement.textContent = timeRemaining;
+    if (timeRemaining <= 0) {
+      endQuiz();
+    }
+  }
+  
+  // Save user's name and the score in local storage
+  function saveHighScore() {
+    var userInitials = initialsInput.value.trim();
+    if (userInitials !== "") {
+      var highScores =
+        JSON.parse(window.localStorage.getItem("highScores")) || [];
+      var latestScore = { score: timeRemaining, initials: userInitials };
+      highScores.push(latestScore);
+      window.localStorage.setItem("highScores", JSON.stringify(highScores));
+      alert("Your score has been submitted");
+    }
+  }
