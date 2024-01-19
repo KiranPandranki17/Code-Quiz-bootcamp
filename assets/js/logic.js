@@ -103,9 +103,10 @@ function handleEnterKey(event) {
     if (event.key === "Enter") {
       saveHighScore();
       alert("Your score has been submitted");
+      window.location.href = "highscores.html";
     }
 
-    window.location.href = "highscores.html";
+  
   }
   
   // Also responds to an Enter key if you want
